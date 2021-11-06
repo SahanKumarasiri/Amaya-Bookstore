@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import Footer from "./Home/Footer";
 
 
 ReactDOM.render(
@@ -10,4 +11,10 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+ReactDOM.render(
+  <React.StrictMode>
+    <Footer />
+  </React.StrictMode>,
+  document.getElementById('footer')
+);
 
