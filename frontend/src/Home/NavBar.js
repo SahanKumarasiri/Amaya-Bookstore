@@ -24,7 +24,7 @@ const NavBar = () =>{
                     <ul>
                         <li><i className="fa fa-volume-control-phone" aria-hidden="true"></i> 0776135690</li>
                         <li>|</li>
-                        <li><a href="mailto:"><i className="fa fa-envelope-o" aria-hidden="true"></i> kumarasirisahan@gmail.com</a></li>
+                        <li><a href="mailto:" target="_blank"><i className="fa fa-envelope-o" aria-hidden="true"></i> kumarasirisahan@gmail.com</a></li>
                         <li>|</li>
                         <li><i className="fa fa-clock-o" aria-hidden="true"></i> 24/7 Hours Working</li>
                         <li><span style={{float:"right"}}>{today}</span></li>
@@ -33,9 +33,9 @@ const NavBar = () =>{
                     <div className="col-sm-4">
                     <ul className="social-icon">
                         <li className="followus-label">Follow Us:</li>
-                        <li><a href="https://www.facebook.com/Sahan.R.Inc"><i className="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="https://wa.link/yrxoew"><i className="fa fa-whatsapp" aria-hidden="true"></i></a></li>
-                        <li><a href="https://www.linkedin.com/in/sahankumarasiri"><i className="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.facebook.com/Sahan.R.Inc" target="_blank"><i className="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="https://wa.link/yrxoew" target="_blank"><i className="fa fa-whatsapp" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/sahankumarasiri" target="_blank"><i className="fa fa-linkedin" aria-hidden="true"></i></a></li>
                     </ul>
                     </div>
                 </div>
@@ -79,7 +79,22 @@ const NavBar = () =>{
                 </div>
                 </div>  
             </header>
-            <span  style={{marginLeft:"10px"}}><i className="fa fa-bolt"></i> <span className="badge badge-success">කියවීම මිනිසා සම්පූර්ණ කරයි !</span><span className="badge badge-warning" style={{color:"white"}}>Reading maketh a full man !</span></span>
+            <div class="card">
+                <div class="card-header">
+                <i class="fa fa-commenting-o" aria-hidden="true"></i> කියමන් - Sayings
+                </div>
+                <div class="card-body">
+                    <marquee>
+                        <span  style={{marginLeft:"10px"}}><i className="fa fa-bolt"></i> <span className="badge badge-success">කියවීම මිනිසා සම්පූර්ණ කරයි !</span><span className="badge badge-secondary" style={{color:"white"}}>Reading maketh a full man !</span></span>
+                        <span  style={{marginLeft:"10px"}}><i className="fa fa-bolt"></i> <span className="badge badge-dark">ඔබ පොත් සොයා යන විට පොත් ඔබ සොයා එයි !</span><span className="badge badge-danger" style={{color:"white"}}>Books come to you when you search for them !</span></span>
+                        <span  style={{marginLeft:"10px"}}><i className="fa fa-bolt"></i> <span className="badge badge-success">පාඨකයා මිය යාමට පෙර ජීවිත දහසක් ජීවත් වේ !</span><span className="badge badge-secondary" style={{color:"white"}}>A reader lives a thousand lives before he dies !</span></span>
+                        <span  style={{marginLeft:"10px"}}><i className="fa fa-bolt"></i> <span className="badge badge-dark">මට එය අහිමි වේ යැයි මම බිය වන තුරු, මම කිසි විටෙකත් කියවීමට ප්‍රිය නොකළෙමි !</span><span className="badge badge-danger" style={{color:"white"}}>Until I feared I would lose it, I never loved to read !</span></span>
+                        <span  style={{marginLeft:"10px"}}><i className="fa fa-bolt"></i> <span className="badge badge-success">ඔබට කවදාවත් මට ගැලපෙන තරම් විශාල තේ කෝප්පයක් හෝ පොතක් ලබා ගත නොහැක !</span><span className="badge badge-secondary" style={{color:"white"}}>You can never get a cup of tea large enough or a book long enough to suit me !</span></span>
+                        <span  style={{marginLeft:"10px"}}><i className="fa fa-bolt"></i> <span className="badge badge-dark">පොත් නැති කාමරයක් ආත්මයක් නැති ශරීරයක් වැනිය !</span><span className="badge badge-danger" style={{color:"white"}}>A room without books is like a body without a soul !</span></span>
+                    </marquee>
+                </div>
+            </div>
+          
             <img src="https://media.giphy.com/media/1TgECF0mNVirC/giphy.gif" style={{float:"right" , width:"20%" , marginRight:"10px"}} className="img-thumbnail"/>
 
             <hr class="my-4"></hr>
@@ -90,10 +105,12 @@ const NavBar = () =>{
             <section>
                 <nav className="nav">
                     <ul className="ul">
-                        <li className="li"><a class="active" href="#home">Home</a></li>
-                        <li className="li"><a href="#news">නවකතා - Novels</a></li>
-                        <li className="li"><a href="#contact">අභිරහස් කතා - Adventure Stories</a></li>
-                        <li className="li"><a href="#about">Cracked Softwares</a></li>
+                        <center>
+                            <li className="li"><a class="active" href="#home">Home</a></li>
+                            <li className="li"><a href="#news">නවකතා - Novels</a></li>
+                            <li className="li"><a href="#contact">අභිරහස් කතා - Adventure Stories</a></li>
+                            <li className="li"><a href="#about">Cracked Softwares</a></li>
+                        </center>
                      </ul>
                 </nav>
                 
@@ -103,13 +120,14 @@ const NavBar = () =>{
                             Featured <i class="fa fa-bookmark-o" aria-hidden="true"></i>
                         </div>
                         <div className="card-body">
-                            <h5 className="card-title">ලෝක පූජිත කතුවරු - World famous authors 📚✍️</h5>
                             <center>
+                                <h5 className="card-title">ලෝක පූජිත කතුවරු - World famous authors 📚✍️</h5>
+                           
                                 <p>
-                                    <a href="https://bit.ly/300huVO"><img src="JK-Rowling.jpg" style={{width:"20%"}} className="zoom" title="JK Rowling"/></a>
-                                    <a href="https://bit.ly/3qdQmOe"><img src="martin.jpg" style={{width:"20%"}} className="zoom" title="Martin Wickramasinghe"/></a>
-                                    <a href="https://bit.ly/3kf3bnk"><img src="sibil.jpg" style={{width:"20%"}} className="zoom" title="Sibil Weththasinghe"/></a>
-                                    <a href="https://bit.ly/3bMeVJp"><img src="steve.jpg" style={{width:"23%"}} className="zoom"title="Steve McConnell"/></a><br/>
+                                    <a href="https://bit.ly/300huVO" target="_blank"><img src="JK-Rowling.jpg" style={{width:"20%"}} className="zoom" title="JK Rowling"/></a>
+                                    <a href="https://bit.ly/3qdQmOe" target="_blank"><img src="martin.jpg" style={{width:"20%"}} className="zoom" title="Martin Wickramasinghe"/></a>
+                                    <a href="https://bit.ly/3kf3bnk" target="_blank"><img src="sibil.jpg" style={{width:"20%"}} className="zoom" title="Sibil Weththasinghe"/></a>
+                                    <a href="https://bit.ly/3bMeVJp" target="_blank"><img src="steve.jpg" style={{width:"23%"}} className="zoom"title="Steve McConnell"/></a><br/>
                 
                                 </p>
                             </center>

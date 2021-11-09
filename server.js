@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const errorHandler = require("./BACKEND/middleware/error");
 
 require("dotenv").config();  //these line is necessary for configuration .env file
 
@@ -31,3 +32,7 @@ app.listen(PORT , () => {
     console.log(`Server is up and running on port number ${PORT}`);
 });
 
+app.use("/api/auth" , require("./BACKEND/routes/auth"));
+
+//Error Handler (Should be the last piece of middleware)
+app.use(errorHandler);
