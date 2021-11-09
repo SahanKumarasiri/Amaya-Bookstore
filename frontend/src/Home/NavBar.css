@@ -165,6 +165,15 @@ article {
   margin-bottom: 10px;
 }
 
+.article {
+  float: left;
+  padding: 20px;
+  width: 100%;
+  background-color: #f1f1f1;
+  height: auto; /* only for demonstration, should be removed */
+  margin-bottom: 10px;
+}
+
 /* Clear floats after the columns */
 section::after {
   content: "";
@@ -190,5 +199,11 @@ section::after {
 
 .zoom:hover {
   transform: scale(1.2); /* (120% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.md-avatar {
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
 }
 

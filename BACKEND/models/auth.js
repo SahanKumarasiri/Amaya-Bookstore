@@ -41,5 +41,10 @@ AdminSchema.methods.getAdminSignedToken = function(){
     return jwt.sign({id : this._id} , process.env.JWT_SECRET_ADMIN , {expiresIn : process.env.JWT_EXPIRE} );
 }
 
+AdminSchema.methods.getAdminEmail = function(){
+    return this.email;
+}
+
+
 const Admin = mongoose.model("admin" , AdminSchema);
 module.exports = Admin;

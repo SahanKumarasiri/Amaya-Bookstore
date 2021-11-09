@@ -80,5 +80,6 @@ exports.sendEmail = async (req , res , next) =>{
 
 const sendAdminToken = (admin , statusCode , res)=>{ //JWT get
     const token = admin.getAdminSignedToken();
-    res.status(200).json({success:true , token});
+    const email = admin.getAdminEmail();
+    res.status(200).json({success:true , token , email});
 }

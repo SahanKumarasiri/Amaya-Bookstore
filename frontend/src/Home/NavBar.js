@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import "./NavBar.css"
 
 const NavBar = () =>{
@@ -46,7 +47,7 @@ const NavBar = () =>{
                 <div className="row">
                     <div className="col-12">
                     <nav className="navbar navbar-expand-lg navbar-light">
-                    <a className="navbar-brand" href="#"><img src="logo1.png" alt="logo"  height="100" style={{display:"block" , border:"0px"}}/></a>
+                    <a className="navbar-brand" href="#"><img src="https://i.ibb.co/DYJXBy6/logo1.png" alt="logo" style={{width:"73%"}} className="img-thumbnail"/></a>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbartoggle" aria-controls="navbartoggle" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                         </button>
@@ -67,7 +68,7 @@ const NavBar = () =>{
                             </div>
                             </li>   
                             <li className="nav-item">
-                            <a className="nav-link" href="#">Admin</a>
+                                <Link to="/login" className="nav-link">Admin</Link>
                             </li>
                             <li className="nav-item">
                             <a className="nav-link" href="#">Contact Us</a>
