@@ -7,8 +7,11 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import green from '@material-ui/core/colors/green';
-import { TextField } from '@material-ui/core';
-import { Button } from '@material-ui/core';
+import Novel from './Books/Novel';
+import Adventure from './Books/Adventure';
+import Programming from './Books/Programming';
+import OL from './Books/OL';
+import AL from './Books/AL';
 
 function TabContainer(props) {
   const { children, dir } = props;
@@ -47,6 +50,7 @@ const styles = theme => ({
 });
 
 class FloatingActionButtonZoom extends React.Component {
+  
   state = {
     value: 0,
   };
@@ -89,266 +93,11 @@ class FloatingActionButtonZoom extends React.Component {
           index={this.state.value}
           onChangeIndex={this.handleChangeIndex}
         >
-          <TabContainer dir={theme.direction}>
-            <form onSubmit={""}>
-                    <div className="card">
-                        <div className="card-header">
-                        ⚠️ This section is reserved only for the Admin ! 
-                        </div>
-                        <div className="card-body">
-                            <center>
-                                <h5 className="card-title">Add Novel Book</h5>
-                                <TextField
-                                    id="outlined-with-placeholder"
-                                    label="Enter Book Name"
-                                    placeholder="ex: example book"
-                                    margin="normal"
-                                    variant="outlined"
-                                    //value = {email} onChange = {(e)=>setEmail(e.target.value)} 
-                                    inputProps={{pattern:"[a-zA-Z ]+[a-zA-Z]+"}}
-                                    type="text"
-                                    required
-                                /><br/>
-                                <TextField
-                                    id="outlined-with-placeholder"
-                                    label="Enter Author"
-                                    placeholder="ex: example author"
-                                    margin="normal"
-                                    variant="outlined"
-                                    //value = {email} onChange = {(e)=>setEmail(e.target.value)} 
-                                    inputProps={{pattern:"[a-zA-Z ]+[a-zA-Z]+"}}
-                                    type="text"
-                                    required
-                                /><br/>
-                                <TextField
-                                    id="outlined-with-placeholder"
-                                    label="Enter Download URL"
-                                    margin="normal"
-                                    variant="outlined"
-                                    placeholder="URL"
-                                    type="text"
-                                    //value = {password} onChange = {(e)=>setPassword(e.target.value)} 
-                                    required
-                                /><br/>
-                                <label class="form-label" for="customFile">Select a cover image</label>
-                                <input type="file" class="form-control" id="customFile" style={{width:"50%"}} required/><br/>
-                                <Button variant="contained" color="primary" type="submit">
-                                    <i class="fa fa-upload" aria-hidden="true"></i> <h6 style={{marginLeft:"5px"}}> </h6>Upload  
-                                </Button>
-                                
-                            </center>
-                        </div>
-                    </div>
-                </form>
-          </TabContainer>
-          <TabContainer dir={theme.direction}>
-            <form onSubmit={""}>
-                    <div className="card">
-                        <div className="card-header">
-                        ⚠️ This section is reserved only for the Admin ! 
-                        </div>
-                        <div className="card-body">
-                            <center>
-                                <h5 className="card-title">Add Programming Book</h5>
-                                <TextField
-                                    id="outlined-with-placeholder"
-                                    label="Enter Book Name"
-                                    placeholder="ex: example book"
-                                    margin="normal"
-                                    variant="outlined"
-                                    //value = {email} onChange = {(e)=>setEmail(e.target.value)} 
-                                    inputProps={{pattern:"[a-zA-Z ]+[a-zA-Z]+"}}
-                                    type="text"
-                                    required
-                                /><br/>
-                                <TextField
-                                    id="outlined-with-placeholder"
-                                    label="Enter Author"
-                                    placeholder="ex: example author"
-                                    margin="normal"
-                                    variant="outlined"
-                                    //value = {email} onChange = {(e)=>setEmail(e.target.value)} 
-                                    inputProps={{pattern:"[a-zA-Z ]+[a-zA-Z]+"}}
-                                    type="text"
-                                    required
-                                /><br/>
-                                <TextField
-                                    id="outlined-with-placeholder"
-                                    label="Enter Download URL"
-                                    margin="normal"
-                                    variant="outlined"
-                                    placeholder="URL"
-                                    type="text"
-                                    //value = {password} onChange = {(e)=>setPassword(e.target.value)} 
-                                    required
-                                /><br/>
-                                <label class="form-label" for="customFile">Select a cover image</label>
-                                <input type="file" class="form-control" id="customFile" style={{width:"50%"}} required/><br/>
-                                <Button variant="contained" color="primary" type="submit">
-                                    <i class="fa fa-upload" aria-hidden="true"></i> <h6 style={{marginLeft:"5px"}}> </h6>Upload  
-                                </Button>
-                                
-                            </center>
-                        </div>
-                    </div>
-                </form>
-          </TabContainer>
-          <TabContainer dir={theme.direction}>
-            <form onSubmit={""}>
-                    <div className="card">
-                        <div className="card-header">
-                        ⚠️ This section is reserved only for the Admin ! 
-                        </div>
-                        <div className="card-body">
-                            <center>
-                                <h5 className="card-title">Add Adventure / Horror Book</h5>
-                                <TextField
-                                    id="outlined-with-placeholder"
-                                    label="Enter Book Name"
-                                    placeholder="ex: example book"
-                                    margin="normal"
-                                    variant="outlined"
-                                    //value = {email} onChange = {(e)=>setEmail(e.target.value)} 
-                                    inputProps={{pattern:"[a-zA-Z ]+[a-zA-Z]+"}}
-                                    type="text"
-                                    required
-                                /><br/>
-                                <TextField
-                                    id="outlined-with-placeholder"
-                                    label="Enter Author"
-                                    placeholder="ex: example author"
-                                    margin="normal"
-                                    variant="outlined"
-                                    //value = {email} onChange = {(e)=>setEmail(e.target.value)} 
-                                    inputProps={{pattern:"[a-zA-Z ]+[a-zA-Z]+"}}
-                                    type="text"
-                                    required
-                                /><br/>
-                                <TextField
-                                    id="outlined-with-placeholder"
-                                    label="Enter Download URL"
-                                    margin="normal"
-                                    variant="outlined"
-                                    placeholder="URL"
-                                    type="text"
-                                    //value = {password} onChange = {(e)=>setPassword(e.target.value)} 
-                                    required
-                                /><br/>
-                                <label class="form-label" for="customFile">Select a cover image</label>
-                                <input type="file" class="form-control" id="customFile" style={{width:"50%"}} required/><br/>
-                                <Button variant="contained" color="primary" type="submit">
-                                    <i class="fa fa-upload" aria-hidden="true"></i> <h6 style={{marginLeft:"5px"}}> </h6>Upload  
-                                </Button>
-                                
-                            </center>
-                        </div>
-                    </div>
-                </form>
-          </TabContainer>
-          <TabContainer dir={theme.direction}>
-            <form onSubmit={""}>
-                    <div className="card">
-                        <div className="card-header">
-                        ⚠️ This section is reserved only for the Admin ! 
-                        </div>
-                        <div className="card-body">
-                            <center>
-                                <h5 className="card-title">Add Ordinary Level Notes</h5>
-                                <TextField
-                                    id="outlined-with-placeholder"
-                                    label="Enter Note Name"
-                                    placeholder="ex: example note"
-                                    margin="normal"
-                                    variant="outlined"
-                                    //value = {email} onChange = {(e)=>setEmail(e.target.value)} 
-                                    inputProps={{pattern:"[a-zA-Z ]+[a-zA-Z]+"}}
-                                    type="text"
-                                    required
-                                /><br/>
-                                <TextField
-                                    id="outlined-with-placeholder"
-                                    label="Enter Author"
-                                    placeholder="ex: example author"
-                                    margin="normal"
-                                    variant="outlined"
-                                    //value = {email} onChange = {(e)=>setEmail(e.target.value)} 
-                                    inputProps={{pattern:"[a-zA-Z ]+[a-zA-Z]+"}}
-                                    type="text"
-                                    required
-                                /><br/>
-                                <TextField
-                                    id="outlined-with-placeholder"
-                                    label="Enter Download URL"
-                                    margin="normal"
-                                    variant="outlined"
-                                    placeholder="URL"
-                                    type="text"
-                                    //value = {password} onChange = {(e)=>setPassword(e.target.value)} 
-                                    required
-                                /><br/>
-                                <label class="form-label" for="customFile">Select a cover image</label>
-                                <input type="file" class="form-control" id="customFile" style={{width:"50%"}} required/><br/>
-                                <Button variant="contained" color="primary" type="submit">
-                                    <i class="fa fa-upload" aria-hidden="true"></i> <h6 style={{marginLeft:"5px"}}> </h6>Upload  
-                                </Button>
-                                
-                            </center>
-                        </div>
-                    </div>
-                </form>
-          </TabContainer>
-          <TabContainer dir={theme.direction}>
-            <form onSubmit={""}>
-                    <div className="card">
-                        <div className="card-header">
-                        ⚠️ This section is reserved only for the Admin ! 
-                        </div>
-                        <div className="card-body">
-                            <center>
-                                <h5 className="card-title">Add Advanced Level Notes</h5>
-                                <TextField
-                                    id="outlined-with-placeholder"
-                                    label="Enter Note Name"
-                                    placeholder="ex: example note"
-                                    margin="normal"
-                                    variant="outlined"
-                                    //value = {email} onChange = {(e)=>setEmail(e.target.value)} 
-                                    inputProps={{pattern:"[a-zA-Z ]+[a-zA-Z]+"}}
-                                    type="text"
-                                    required
-                                /><br/>
-                                <TextField
-                                    id="outlined-with-placeholder"
-                                    label="Enter Author"
-                                    placeholder="ex: example author"
-                                    margin="normal"
-                                    variant="outlined"
-                                    //value = {email} onChange = {(e)=>setEmail(e.target.value)} 
-                                    inputProps={{pattern:"[a-zA-Z ]+[a-zA-Z]+"}}
-                                    type="text"
-                                    required
-                                /><br/>
-                                <TextField
-                                    id="outlined-with-placeholder"
-                                    label="Enter Download URL"
-                                    margin="normal"
-                                    variant="outlined"
-                                    placeholder="URL"
-                                    type="text"
-                                    //value = {password} onChange = {(e)=>setPassword(e.target.value)} 
-                                    required
-                                /><br/>
-                                <label class="form-label" for="customFile">Select a cover image</label>
-                                <input type="file" class="form-control" id="customFile" style={{width:"50%"}} required/><br/>
-                                <Button variant="contained" color="primary" type="submit">
-                                    <i class="fa fa-upload" aria-hidden="true"></i> <h6 style={{marginLeft:"5px"}}> </h6>Upload  
-                                </Button>
-                                
-                            </center>
-                        </div>
-                    </div>
-                </form>
-          </TabContainer>
+          <TabContainer dir={theme.direction}><Novel/></TabContainer>
+          <TabContainer dir={theme.direction}><Programming/></TabContainer>
+          <TabContainer dir={theme.direction}><Adventure/></TabContainer>
+          <TabContainer dir={theme.direction}><OL/></TabContainer>
+          <TabContainer dir={theme.direction}><AL/></TabContainer>
         </SwipeableViews>
       </div>
     );

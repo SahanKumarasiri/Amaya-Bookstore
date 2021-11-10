@@ -1,6 +1,11 @@
-import React from "react";
+import React , {useEffect} from "react";
 import {Link} from "react-router-dom";
 import "./NavBar.css"
+import Featured from "./Featured"
+import {useSelector , useDispatch} from "react-redux";
+
+//Actions
+import {getNovels as listNovels} from "../Redux/actions/bookActions";
 
 const NavBar = () =>{
     
@@ -15,6 +20,15 @@ const NavBar = () =>{
     var curr_year = today.getFullYear();
 
     today = m_names[curr_month] + " " + curr_date + "/ " + curr_year;
+
+    const dispatch = useDispatch();
+
+    const getNovels = useSelector(state => state.getNovels);
+    const {novels , loading , error} = getNovels;
+
+    useEffect(()=>{
+        dispatch(listNovels())
+    },[dispatch])
 
     return(
         <div id="header">
@@ -133,43 +147,31 @@ const NavBar = () =>{
                                 </p>
                             </center>
                         </div>
+                    </div><br/><br/>
+                    <div>
+                        
+                        
+                        <div>
+                        {loading ? (
+                        <h2>Loading...</h2>
+                        ): error ? (
+                        <h2>{error}</h2>
+                        ):(
+                            novels.map((novel)=>(
+                            <Featured
+                                key = {novel._id}
+                                NovelId = {novel._id}
+                                bookName ={novel.bookName}
+                                author = {novel.author}
+                                bookURL = {novel.bookURL}
+                                bookImage={novel.bookImage}
+                                downloads={novel.downloads}
+                            />
+
+                        ))
+                        )}
+                        </div>
                     </div>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
-                    <p>qqqq</p>
                 </article>
             </section>
 

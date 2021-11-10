@@ -34,5 +34,11 @@ app.listen(PORT , () => {
 
 app.use("/api/auth" , require("./BACKEND/routes/auth"));
 
+app.use("/novel" , require("./BACKEND/routes/novels"));
+app.use("/adventure" , require("./BACKEND/routes/adventures"));
+app.use("/programming" , require("./BACKEND/routes/programming"));
+app.use("/ol" , require("./BACKEND/routes/ol"));
+app.use("/al" , require("./BACKEND/routes/al"));
+
 //Error Handler (Should be the last piece of middleware)
 app.use(errorHandler);
