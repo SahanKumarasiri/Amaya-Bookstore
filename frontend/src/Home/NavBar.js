@@ -2,10 +2,8 @@ import React , {useEffect} from "react";
 import {Link} from "react-router-dom";
 import "./NavBar.css"
 import Featured from "./Featured"
-import {useSelector , useDispatch} from "react-redux";
-
-//Actions
-import {getNovels as listNovels} from "../Redux/actions/bookActions";
+import AdventureFeatured from "./AdventureFeatured"
+import ProgrammingFeatured from "./ProgrammingFeatured"
 
 const NavBar = () =>{
     
@@ -20,15 +18,6 @@ const NavBar = () =>{
     var curr_year = today.getFullYear();
 
     today = m_names[curr_month] + " " + curr_date + "/ " + curr_year;
-
-    const dispatch = useDispatch();
-
-    const getNovels = useSelector(state => state.getNovels);
-    const {novels , loading , error} = getNovels;
-
-    useEffect(()=>{
-        dispatch(listNovels())
-    },[dispatch])
 
     return(
         <div id="header">
@@ -124,7 +113,7 @@ const NavBar = () =>{
                             <li className="li"><a class="active" href="#home">Home</a></li>
                             <li className="li"><a href="#news">නවකතා - Novels</a></li>
                             <li className="li"><a href="#contact">අභිරහස් කතා - Adventure Stories</a></li>
-                            <li className="li"><a href="#about">Cracked Softwares</a></li>
+                            <li className="li"><a href="http://onlinesoftwaresolutions.000webhostapp.com/" target="_blank">Cracked Softwares</a></li>
                         </center>
                      </ul>
                 </nav>
@@ -148,29 +137,14 @@ const NavBar = () =>{
                             </center>
                         </div>
                     </div><br/><br/>
-                    <div>
-                        
-                        
-                        <div>
-                        {loading ? (
-                        <h2>Loading...</h2>
-                        ): error ? (
-                        <h2>{error}</h2>
-                        ):(
-                            novels.map((novel)=>(
-                            <Featured
-                                key = {novel._id}
-                                NovelId = {novel._id}
-                                bookName ={novel.bookName}
-                                author = {novel.author}
-                                bookURL = {novel.bookURL}
-                                bookImage={novel.bookImage}
-                                downloads={novel.downloads}
-                            />
-
-                        ))
-                        )}
-                        </div>
+                    <div style={{display:"inline-grid" , marginLeft:"5px"}}>
+                            <Featured />
+                    </div>
+                    <div style={{display:"inline-grid" , marginLeft:"5px"}}>
+                             <AdventureFeatured />
+                    </div>
+                    <div style={{display:"inline-grid" , marginLeft:"5px"}}>
+                             <ProgrammingFeatured/>
                     </div>
                 </article>
             </section>

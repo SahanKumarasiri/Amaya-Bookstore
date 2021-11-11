@@ -11,6 +11,8 @@ const Novel = ()=>{
     const [bookURL , setBookURL] = useState("");
     const [bookImage , setBookImage] = useState("");
     const downloads = -1;
+    const hearts = -1;
+    const category = "novel";
     const [loading, setLoading] = useState(false); //additional 
     const [isError, setIsError] = useState(false);
 
@@ -27,7 +29,7 @@ const Novel = ()=>{
         }
 
         try {
-            const {data} = await axios.post("http://localhost:8070/novel/add" , {bookName , author , bookURL , bookImage , downloads} , config);
+            const {data} = await axios.post("http://localhost:8070/novel/add" , {bookName , author , bookURL , bookImage , downloads , hearts , category} , config);
             toast("Success! Novel Added 😘")
             setLoading(false);
 
@@ -67,7 +69,6 @@ const Novel = ()=>{
                                     placeholder="ex: example author"
                                     margin="normal"
                                     variant="outlined"
-                                    inputProps={{pattern:"[a-zA-Z ]+[a-zA-Z]+"}}
                                     type="text"
                                     value={author}
                                     onChange={(e)=>setAuthor(e.target.value)}

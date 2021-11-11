@@ -5,7 +5,7 @@ import { BrowserRouter as Router , Route , Switch } from "react-router-dom";
 
 import NavBar from "./Home/NavBar";
 import AdminLogin from "./Admin/Login";
-import PrivateRoute from "./Admin/PrivateRoute";
+import Item from "./Home/Item"
 import PrivateScreen from "./Admin/PrivateScreen";
 
 function App() {
@@ -38,6 +38,7 @@ function App() {
                   <Route path="/admin/:id/:name" exact component={PrivateScreen} />
                   <Route path="/login" exact component={AdminLogin} />
                   <Route path="/" exact component={NavBar} />
+                  <Route path="/view/:id/:crypto/:bookName/:author/:url/:image/:downloads/:hearts/:category" exact component={Item} />
               </Switch>
             </main>
            

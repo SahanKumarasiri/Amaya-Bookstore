@@ -1,58 +1,11 @@
-import {useState , useEffect} from "react";
+import React  from "react";
+import { useParams } from "react-router";
 import {Link} from "react-router-dom";
 import axios from "axios";
-import TextField from "@material-ui/core/TextField";
-import { Button } from "@material-ui/core";
-import crypto from "crypto";
+import "./NavBar.css"
 
-
-const Login = ({history})=>{
-    const id = crypto.randomBytes(32).toString("hex");
-    const [password , setPassword] = useState("");
-    const [email , setEmail] = useState("");
-    const [error , setError] = useState("");
-    const [value , setValue] = useState({
-        email:"Sahan or Amaya"
-    });
-
-    const loginHandler = async (e)=>{
-        e.preventDefault();
-
-        const config = {
-            headers : {
-                "Content-Type" : "application/json"
-            }
-        }
-
-        try {
-            const {data} = await axios.post("http://localhost:8070/api/auth/login" , {email , password} , config);
-            setValue(data.email);
-            localStorage.setItem("authToken" , data.token);
-
-            history.push(`/admin/${id}/${data.email}`);
-
-        } catch (error) {
-            setError(error.response.data.error);
-            setTimeout(()=>{
-                setError("");
-            } , 5000); //5s
-        }
-    }
-
-    useEffect(()=>{
-        if(localStorage.getItem("authToken")){  //push a user if he already logged in
-           history.push(`/admin/${id}/${value.email}`);
-        }
-    } , [history])
-
-    const  showPassword = () => {
-        var x = document.getElementById("myInput");
-        if (x.type === "password") {
-          x.type = "text";
-        } else {
-          x.type = "password";
-        }
-    }
+const NavBar = () =>{
+    
     var m_names = new Array("January", "February", "March", 
                 "April", "May", "June", "July",
                 "August", "September", 
@@ -64,6 +17,36 @@ const Login = ({history})=>{
     var curr_year = today.getFullYear();
 
     today = m_names[curr_month] + " " + curr_date + "/ " + curr_year;
+
+    const{ id , bookName , author , url , image , downloads , hearts , category} = useParams();
+    const Image = decodeURIComponent(image);
+    const URL = decodeURIComponent(url);
+
+    const handleDownload = async ()=>{
+        try {
+            const {data} = await axios.put(`http://localhost:8070/${category}/update/${id}` , {downloads} );
+  
+        } catch (error) {
+            alert(error)
+        }
+    }
+
+    const handleHeart = async ()=>{
+        try {
+            const {data} = await axios.put(`http://localhost:8070/${category}/heart/${id}` , {hearts} );
+  
+        } catch (error) {
+            alert(error)
+        }
+    }
+
+    const Increment = ()=>{
+        document.getElementById("increment").innerHTML = Number(downloads) + 1 + ` <i class="fa fa-download" aria-hidden="true"></i>`;
+    }
+
+    const Heart = ()=>{
+        document.getElementById("heart").innerHTML = Number(hearts) + 1 +` <i class="fa fa-heart coloured" aria-hidden="true"></i>`;
+    }
 
     return(
         <div id="header">
@@ -103,7 +86,7 @@ const Login = ({history})=>{
 
                         <div className="collapse navbar-collapse" id="navbartoggle">
                         <ul className="navbar-nav float-right">
-                            <li className="nav-item">
+                            <li className="nav-item active">
                             <Link to="/" className="nav-link"><i className="fa fa-book" aria-hidden="true"></i> Home </Link>
                             </li>
                             <li className="nav-item dropdown">
@@ -116,7 +99,7 @@ const Login = ({history})=>{
                                 <a className="dropdown-item" href="#"><i class="fa fa-check-square-o" aria-hidden="true"></i> උසස් පෙළ කෙටි සටහන් - Advanced Level Notes</a>
                             </div>
                             </li>   
-                            <li className="nav-item active">
+                            <li className="nav-item">
                                 <Link to="/login" className="nav-link">Admin</Link>
                             </li>
                             <li className="nav-item">
@@ -144,11 +127,11 @@ const Login = ({history})=>{
                     </marquee>
                 </div>
             </div>
-        
+          
             <img src="https://media.giphy.com/media/1TgECF0mNVirC/giphy.gif" style={{float:"right" , width:"20%" , marginRight:"10px"}} className="img-thumbnail"/>
 
             <hr class="my-4"></hr>
-            <center><h1 style={{fontFamily:"Copperplate, Papyrus, fantasy"}}>Admin</h1></center>
+            <center><h1 style={{fontFamily:"Copperplate, Papyrus, fantasy"}}>ප්‍රසිද්ධ පොත් - Most Popular Books</h1></center>
             <hr class="my-4"></hr>
             
 
@@ -159,57 +142,34 @@ const Login = ({history})=>{
                             <li className="li"><a class="active" href="#home">Home</a></li>
                             <li className="li"><a href="#news">නවකතා - Novels</a></li>
                             <li className="li"><a href="#contact">අභිරහස් කතා - Adventure Stories</a></li>
-                            <li className="li"><a href="http://onlinesoftwaresolutions.000webhostapp.com/" target="_blank">Cracked Softwares</a></li>
+                            <li className="li"><a href="#about">Cracked Softwares</a></li>
                         </center>
-                    </ul>
+                     </ul>
                 </nav>
                 
                 <article>
-                    <form onSubmit={loginHandler}>
-                        <div className="card">
-                                <div className="card-header">
-                                ⚠️ This section is reserved only for the Admin ! 
-                                </div>
-                                <div className="card-body">
-                                    <center>
-                                        <h5 className="card-title">Login Form</h5>
-                                        {error && <span className="badge bg-warning">{error}</span>} <br/>
-                                        <TextField
-                                            id="outlined-with-placeholder"
-                                            label="Enter Email"
-                                            placeholder="ex: admin@example.com"
-                                            margin="normal"
-                                            variant="outlined"
-                                            value = {email} onChange = {(e)=>setEmail(e.target.value)} required
-                                            title="Please enter a valid email"
-                                            type="email"
-                                        /><br/>
-                                        <TextField
-                                            id="outlined-with-placeholder"
-                                            label="Enter Password"
-                                            margin="normal"
-                                            variant="outlined"
-                                            placeholder="Type Secretly"
-                                            type="password"
-                                            value = {password} onChange = {(e)=>setPassword(e.target.value)} required
-                                        /><br/>
-                                        <Button variant="contained" color="primary" type="submit">
-                                            <i class="fa fa-sign-in" aria-hidden="true"></i> <h6 style={{marginLeft:"5px"}}> </h6>Login  
-                                        </Button>
-                                        
-                                    </center>
-                                </div>
-                        </div>
-                    </form>
                    
+                    <div>
+                        <div class="card border-success mb-3 polaroid" style={{maxWidth: "30rem" , display:"block" , marginLeft:"auto" , marginRight:"auto"}}>
+                            <center>
+                                <img src={Image} border="0'" alt={Image} className="img-thumbnail" style={{width:"800px" , height:"600px"}}/>
+                                <div class="card-header">{bookName}</div>
+                                <span className="span" id="heart" onClick={() => { handleHeart(); Heart();}}>{hearts} <i class="fa fa-heart" aria-hidden="true"></i></span> |
+                                <span id="increment"> {downloads} <i class="fa fa-download" aria-hidden="true"></i></span>
+                                <div class="card-body text-success">
+                                    <span className="badge badge-success">{author}</span><br/><br/>
+                                    <a href={URL} target="_blank"><button className="btn btn-danger" onClick={() => { handleDownload(); Increment();}}><i class="fa fa-download" aria-hidden="true"></i> Download</button></a>
+                                </div>
+                            </center>
+                        </div>
+                    </div>
                 </article>
             </section>
 
 
-      
-    </div>
-       
+          
+        </div>
     )
 }
 
-export default Login;
+export default NavBar;

@@ -10,6 +10,9 @@ const Novel = ()=>{
     const [author , setAuthor] = useState("");
     const [bookURL , setBookURL] = useState("");
     const [bookImage , setBookImage] = useState("");
+    const downloads = -1;
+    const hearts = -1;
+    const category = "adventure";
     const [loading, setLoading] = useState(false); //additional 
     const [isError, setIsError] = useState(false);
 
@@ -26,7 +29,7 @@ const Novel = ()=>{
         }
 
         try {
-            const {data} = await axios.post("http://localhost:8070/adventure/add" , {bookName , author , bookURL , bookImage} , config);
+            const {data} = await axios.post("http://localhost:8070/adventure/add" , {bookName , author , bookURL , bookImage , downloads , hearts , category} , config);
             toast("Success! Adventure Book Added 😘")
             setLoading(false);
 
@@ -55,7 +58,6 @@ const Novel = ()=>{
                                     placeholder="ex: example book"
                                     margin="normal"
                                     variant="outlined"                                  
-                                    inputProps={{pattern:"[a-zA-Z ]+[a-zA-Z]+"}}
                                     type="text"
                                     value={bookName}
                                     onChange={(e)=>setBookName(e.target.value)}
@@ -67,7 +69,6 @@ const Novel = ()=>{
                                     placeholder="ex: example author"
                                     margin="normal"
                                     variant="outlined"
-                                    inputProps={{pattern:"[a-zA-Z ]+[a-zA-Z]+"}}
                                     type="text"
                                     value={author}
                                     onChange={(e)=>setAuthor(e.target.value)}
@@ -96,7 +97,8 @@ const Novel = ()=>{
                                     onChange={(e)=>setBookImage(e.target.value)}
                                     required
                                 /><br/>
-                                
+                                 {isError && <small className="mt-3 d-inline-block text-danger">Something went wrong. Please try again later.</small>}
+                                    {/*decision*/}
                                 <Button variant="contained" color="primary" type="submit"
                                 disabled={loading}>
                                 <i class="fa fa-upload" aria-hidden="true"></i> <h6 style={{marginLeft:"5px"}}> </h6> {loading ? 'Uploading...' : 'Upload'}  

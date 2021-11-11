@@ -10,6 +10,9 @@ const Novel = ()=>{
     const [author , setAuthor] = useState("");
     const [noteURL , setNoteURL] = useState("");
     const [noteImage , setNoteImage] = useState("");
+    const downloads = -1;
+    const hearts = -1;
+    const category = "ol";
     const [loading, setLoading] = useState(false); //additional 
     const [isError, setIsError] = useState(false);
 
@@ -27,7 +30,7 @@ const Novel = ()=>{
         }
 
         try {
-            const {data} = await axios.post("http://localhost:8070/ol/add" , {noteName , author , noteURL , noteImage} , config);
+            const {data} = await axios.post("http://localhost:8070/ol/add" , {noteName , author , noteURL , noteImage , downloads , hearts , category} , config);
             toast("Success! OL note Added 😘")
             setLoading(false);
 
@@ -57,7 +60,6 @@ const Novel = ()=>{
                                     placeholder="ex: example book"
                                     margin="normal"
                                     variant="outlined"                                  
-                                    inputProps={{pattern:"[a-zA-Z ]+[a-zA-Z]+"}}
                                     type="text"
                                     value={noteName}
                                     onChange={(e)=>setNoteName(e.target.value)}
@@ -69,7 +71,6 @@ const Novel = ()=>{
                                     placeholder="ex: example author"
                                     margin="normal"
                                     variant="outlined"
-                                    inputProps={{pattern:"[a-zA-Z ]+[a-zA-Z]+"}}
                                     type="text"
                                     value={author}
                                     onChange={(e)=>setAuthor(e.target.value)}

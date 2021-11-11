@@ -27,7 +27,7 @@ export default class Item extends React.Component {
   };
 
   getData = () => {
-    fetch(`http://localhost:8070/novel`)
+    fetch(`http://localhost:8070/programming`)
       .then(response => response.json())
       .then(data => {
         const { query } = this.state;
@@ -58,30 +58,30 @@ export default class Item extends React.Component {
  
   render() {
     return (
-     <div className="polaroid" style={{ width:"auto" , height:"auto"  , maxWidth:"18rem"}}>
+      <div className="polaroid" style={{ width:"auto" , height:"auto"  , maxWidth:"18rem"}}>
            
-            <div>
-                {this.state.filteredData.length === 0 ? (
-                              <h1></h1>
-                            ): (this.state.filteredData.map(i => 
-                <p>
-                    <center>
-                      <div className="card border-primary mb-3" > 
-                          <div className="card-body text-dark">
-                            <img src={i.bookImage} border="0'" alt={i.bookName} className="img-thumbnail zoom" style={{width:"200px" , height:"300px"}}/>
-                            
-                            <p ><b>{i.bookName}</b></p>
-                            <p className="badge badge-success">{i.author}</p><br/>
-                            <span style={{float:"left"}} className="coloured"><i class="fa fa-heart" aria-hidden="true"></i> {i.hearts}</span>
-                            <span style={{float:"right"}}><i class="fa fa-download" aria-hidden="true"></i> {i.downloads}</span>
-                            <Link to= {`/view/${i._id}/${crypto.randomBytes(40).toString("hex")}/${i.bookName}/${i.author}/${encodeURIComponent(i.bookURL)}/${encodeURIComponent(i.bookImage)}/${i.downloads}/${i.hearts}/${i.category}`}><button className="btn btn-primary" style={{width:"100%"}}><i class="fa fa-eye" aria-hidden="true"></i> View</button></Link>
-                          </div>
+      <div>
+          {this.state.filteredData.length === 0 ? (
+                        <h1></h1>
+                      ): (this.state.filteredData.map(i => 
+          <p>
+              <center>
+                <div className="card border-primary mb-3" > 
+                    <div className="card-body text-dark">
+                      <img src={i.bookImage} border="0'" alt={i.bookName} className="img-thumbnail zoom" style={{width:"200px" , height:"300px"}}/>
                       
-                      </div>
-                    </center>
+                      <p ><b>{i.bookName}</b></p>
+                      <p className="badge badge-success">{i.author}</p><br/>
+                      <span style={{float:"left"}} className="coloured"><i class="fa fa-heart" aria-hidden="true"></i> {i.hearts}</span>
+                      <span style={{float:"right"}}><i class="fa fa-download" aria-hidden="true"></i> {i.downloads}</span>
+                      <Link to= {`/view/${i._id}/${crypto.randomBytes(40).toString("hex")}/${i.bookName}/${i.author}/${encodeURIComponent(i.bookURL)}/${encodeURIComponent(i.bookImage)}/${i.downloads}/${i.hearts}/${i.category}`}><button className="btn btn-primary" style={{width:"100%"}}><i class="fa fa-eye" aria-hidden="true"></i> View</button></Link>
+                    </div>
+                
+                </div>
+              </center>
 
-                </p>))}
-            </div>
+          </p>))}
+      </div>
        
      </div>
     );

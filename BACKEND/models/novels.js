@@ -17,6 +17,12 @@ const NovelSchema = new Schema({
     },
     downloads:{
         type:String,
+    },
+    hearts:{
+        type:String
+    },
+    category:{
+        type:String
     }
 
 })

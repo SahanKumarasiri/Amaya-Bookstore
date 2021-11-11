@@ -6,14 +6,18 @@ router.route('/add').post((req, res) => {
     const author = req.body.author;
     const bookURL = req.body.bookURL;
     const bookImage = req.body.bookImage;
+    const category = req.body.category;
     const downloads =Number(req.body.downloads) + 1;
+    const hearts =Number(req.body.hearts) + 1;
 
     const newNovelData = {
         bookName,
         author,
         bookURL,
         bookImage,
-        downloads
+        downloads,
+        hearts,
+        category
     }
 
     const newNovel = new Novel(newNovelData);
@@ -34,15 +38,27 @@ router.route("/").get((req , res)=>{ //route for display all
 });
 
 router.route("/update/:id").put(async (req , res)=>{  //update data
-    const bookName = req.body.bookName;
-    const author = req.body.author;
-    const bookURL = req.body.bookURL;
-    const bookImage = req.body.bookImage;
+    const ID = req.params.id;
     const downloads = Number(req.body.downloads) + 1;
 
-    const updateNovel = {bookName , author , bookURL , bookImage , downloads};
+    const updateNovel = {downloads};
 
-    await Novel.findOneAndUpdate(author , updateNovel)
+    await Novel.findByIdAndUpdate(ID , updateNovel)
+    .then(()=>{
+        res.status(200).send({status : "Novel Updated"});
+    }).catch((err)=>{
+        console.log(err);
+        res.status(500).send({status : "Error with updating data" , error : err.message});
+    });
+});
+
+router.route("/heart/:id").put(async (req , res)=>{  //update data
+    const ID = req.params.id;
+    const hearts = Number(req.body.hearts) + 1;
+
+    const updateNovel = {hearts};
+
+    await Novel.findByIdAndUpdate(ID , updateNovel)
     .then(()=>{
         res.status(200).send({status : "Novel Updated"});
     }).catch((err)=>{

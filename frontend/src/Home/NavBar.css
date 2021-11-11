@@ -159,7 +159,7 @@
 article {
   float: left;
   padding: 20px;
-  width: 70%;
+  width: 75%;
   background-color: #f1f1f1;
   height: auto; /* only for demonstration, should be removed */
   margin-bottom: 10px;
@@ -206,4 +206,17 @@ section::after {
   width: 30px;
   height: 30px;
 }
+/*card opacity*/
+.polaroid {
+  box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 255), 0 6px 20px 0 rgba(255, 255, 255, 255);
+  
+ 
+}
 
+.span:hover{
+  color: red;
+}
+
+.coloured{
+  color: red;
+}
