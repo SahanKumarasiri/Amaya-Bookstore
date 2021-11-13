@@ -58,7 +58,7 @@ export default class Item extends React.Component {
  
   render() {
     return (
-      <div className="polaroid" style={{ width:"auto" , height:"auto"  , maxWidth:"18rem"}}>
+      <div className="polaroid" style={{ width:"auto" , height:"auto"  , maxWidth:"auto"}}>
            
       <div>
           {this.state.filteredData.length === 0 ? (
@@ -74,7 +74,7 @@ export default class Item extends React.Component {
                       <p className="badge badge-success">{i.author}</p><br/>
                       <span style={{float:"left"}} className="coloured"><i class="fa fa-heart" aria-hidden="true"></i> {i.hearts}</span>
                       <span style={{float:"right"}}><i class="fa fa-download" aria-hidden="true"></i> {i.downloads}</span>
-                      <Link to= {`/view/${i._id}/${crypto.randomBytes(40).toString("hex")}/${i.bookName}/${i.author}/${encodeURIComponent(i.bookURL)}/${encodeURIComponent(i.bookImage)}/${i.downloads}/${i.hearts}/${i.category}`}><button className="btn btn-primary" style={{width:"100%"}}><i class="fa fa-eye" aria-hidden="true"></i> View</button></Link>
+                      <Link to= {`/view/${i._id}/${crypto.randomBytes(40).toString("hex")}/${i.bookName}/${i.author}/${encodeURIComponent(i.bookURL)}/${encodeURIComponent(i.bookImage)}/${i.downloads}/${i.hearts}/${i.category}/${"අභිරහස් කතා - Adventure Books"}/${encodeURIComponent("/adventure")}`}><button className="btn btn-primary" style={{width:"100%"}}><i class="fa fa-eye" aria-hidden="true"></i> View</button></Link>
                     </div>
                 
                 </div>

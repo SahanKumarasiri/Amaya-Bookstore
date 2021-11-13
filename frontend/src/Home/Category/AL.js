@@ -1,16 +1,62 @@
-import React , {useEffect} from "react";
-import {Link} from "react-router-dom";
-import "./NavBar.css"
-import Featured from "./Featured"
-import AdventureFeatured from "./AdventureFeatured"
-import ProgrammingFeatured from "./ProgrammingFeatured"
+import React from "react";
+import "../NavBar.css"
+import { Link } from "react-router-dom";
+import crypto from "crypto"
 
-const NavBar = () =>{
-    
+
+export default class Item extends React.Component {
+  state = {
+    query: "",
+    data: [],
+    filteredData: [],
+    today:''
+  };
+
+  handleInputChange = event => {
+    const query = event.target.value;
+
+    this.setState(prevState => {
+      const filteredData = prevState.data.filter(element => {
+        return element.noteName.toLowerCase().includes(query.toLowerCase());
+      });
+
+      return {
+        query,
+        filteredData
+      };
+    });
+  };
+
+  getData = () => {
+    fetch(`http://localhost:8070/al`)
+      .then(response => response.json())
+      .then(data => {
+        const { query } = this.state;
+        const filteredData = data.filter(element => {
+          return(
+            element._id.toLowerCase().includes(query.toLowerCase()) >= 0 ||
+            element.noteName.toLowerCase().includes(query.toLowerCase()) >= 0 ||
+            element.author.toLowerCase().includes(query.toLowerCase()) >= 0 ||
+            element.noteURL.toLowerCase().includes(query.toLowerCase()) >= 0 ||
+            element.noteImage.toLowerCase().includes(query.toLowerCase()) >= 0 ||
+            element.downloads.toLowerCase().includes(query.toLowerCase()) >= 0 ||
+            element.hearts.toLowerCase().includes(query.toLowerCase()) >= 0 ||
+            element.category.toLowerCase().includes(query.toLowerCase()) >= 0
+          )
+        });
+
+        this.setState({
+          data,
+          filteredData
+        });
+      });
+  };
+
+  Date(){
     var m_names = new Array("January", "February", "March", 
-                "April", "May", "June", "July",
-                "August", "September", 
-                "October", "November", "December");
+    "April", "May", "June", "July",
+    "August", "September", 
+    "October", "November", "December");
 
     var today = new Date();
     var curr_date = today.getDate();
@@ -19,7 +65,21 @@ const NavBar = () =>{
 
     today = m_names[curr_month] + " " + curr_date + "/ " + curr_year;
 
-    return(
+    this.setState({
+        today
+    })
+
+  }
+
+  componentWillMount() {
+    this.getData();
+    this.Date();
+  }
+
+  
+ 
+  render() {
+    return (
         <div id="header">
             <div className="topbar">
                 <div className="container">
@@ -31,7 +91,7 @@ const NavBar = () =>{
                         <li><a href="mailto:" target="_blank"><i className="fa fa-envelope-o" aria-hidden="true"></i> kumarasirisahan@gmail.com</a></li>
                         <li>|</li>
                         <li><i className="fa fa-clock-o" aria-hidden="true"></i> 24/7 Hours Working</li>
-                        <li><span style={{float:"right"}}>{today}</span></li>
+                        <li><span style={{float:"right"}}>{this.state.today}</span></li>
                     </ul>
                     </div>
                     <div className="col-sm-4">
@@ -57,13 +117,13 @@ const NavBar = () =>{
 
                         <div className="collapse navbar-collapse" id="navbartoggle">
                         <ul className="navbar-nav float-right">
-                            <li className="nav-item active">
-                            <a className="nav-link" href="#"><i className="fa fa-book" aria-hidden="true"></i> Home </a>
+                            <li className="nav-item">
+                            <Link className="nav-link" to="/"><i className="fa fa-book" aria-hidden="true"></i> Home </Link>
                             </li>
                             <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">වර්ගීකරණය - Category</a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <Link className="dropdown-item" to="/novel"><i class="fa fa-check-square-o" aria-hidden="true"></i> නවකතා - Novels</Link>
+                                <Link className="dropdown-item" to="/novel"><i class="fa fa-check-square-o" aria-hidden="true"></i> නවකතා - Novels</Link>
                                 <Link className="dropdown-item" to="/programming"><i class="fa fa-check-square-o" aria-hidden="true"></i> Programming Languages</Link>
                                 <Link className="dropdown-item" to="/adventure"><i class="fa fa-check-square-o" aria-hidden="true"></i> අභිරහස් කතා - Adventure/Horror</Link>
                                 <Link className="dropdown-item" to="/ol"><i class="fa fa-check-square-o" aria-hidden="true"></i> සාමාන්‍ය පෙළ කෙටි සටහන් - Ordinary Level Notes</Link>
@@ -98,13 +158,14 @@ const NavBar = () =>{
                     </marquee>
                 </div>
             </div>
-          
-            <img src="https://media.giphy.com/media/1TgECF0mNVirC/giphy.gif" style={{float:"right" , width:"20%" , marginRight:"10px"}} className="img-thumbnail"/>
+
             <div style={{marginLeft:"15px"}}>
-                <Link to="/"><span>Dashbord</span ></Link>
+                <Link to="/"><span>Dashbord</span ></Link> <i class="fa fa-chevron-right" aria-hidden="true"></i> <Link to="/al"><span>උසස් පෙළ කෙටි සටහන් - Advanced Level Notes</span ></Link>
             </div>
+            <img src="https://media.giphy.com/media/1TgECF0mNVirC/giphy.gif" style={{float:"right" , width:"20%" , marginRight:"10px"}} className="img-thumbnail"/>
+
             <hr class="my-4"></hr>
-            <center><h1 style={{fontFamily:"Copperplate, Papyrus, fantasy"}}>ප්‍රසිද්ධ පොත් - Most Popular Books</h1></center>
+            <center><h1 style={{fontFamily:"Copperplate, Papyrus, fantasy"}}>උසස් පෙළ කෙටි සටහන් - Advanced Level Notes</h1></center>
             <hr class="my-4"></hr>
             
 
@@ -112,51 +173,56 @@ const NavBar = () =>{
                 <nav className="nav">
                     <ul className="ul">
                         <center>
-                        <li className="li"><Link class="active" to="/">Home</Link></li>
+                        <li className="li"><Link to="/">Home</Link></li>
                             <li className="li"><Link to="/novel">නවකතා - Novels</Link></li>
                             <li className="li"><Link to="/adventure">අභිරහස් කතා - Adventure Stories</Link></li>
                             <li className="li"><a href="http://onlinesoftwaresolutions.000webhostapp.com/" target="_blank">Cracked Softwares</a></li>
                         </center>
                      </ul>
                 </nav>
-                
                 <article>
-                    <div className="card">
-                        <div className="card-header">
-                            Featured <i class="fa fa-bookmark-o" aria-hidden="true"></i>
-                        </div>
-                        <div className="card-body">
-                            <center>
-                                <h5 className="card-title">ලෝක පූජිත කතුවරු - World famous authors 📚✍️</h5>
-                           
-                                <p>
-                                    <a href="https://bit.ly/300huVO" target="_blank"><img src="JK-Rowling.jpg" style={{width:"20%"}} className="zoom" title="JK Rowling"/></a>
-                                    <a href="https://bit.ly/3qdQmOe" target="_blank"><img src="martin.jpg" style={{width:"20%"}} className="zoom" title="Martin Wickramasinghe"/></a>
-                                    <a href="https://bit.ly/3kf3bnk" target="_blank"><img src="sibil.jpg" style={{width:"20%"}} className="zoom" title="Sibil Weththasinghe"/></a>
-                                    <a href="https://bit.ly/3bMeVJp" target="_blank"><img src="steve.jpg" style={{width:"23%"}} className="zoom"title="Steve McConnell"/></a><br/>
+                    <div class="input-group rounded">
+                      <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" onChange={this.handleInputChange} value={this.state.query} />
+                      <span class="input-group-text border-0" id="search-addon" style = {{float:"right"}}>
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                    <br/>
+                    <div style={{ width:"auto" , height:"auto"  , maxWidth:"auto"}}>
                 
-                                </p>
-                            </center>
-                        </div>
-                    </div><br/><br/>
-                   <center>
-                        <div style={{display:"inline-grid" , marginLeft:"10px"}}>
-                                <Featured />
-                        </div>
-                        <div style={{display:"inline-grid" , marginLeft:"10px"}}>
-                                <AdventureFeatured />
-                        </div>
-                        <div style={{display:"inline-grid" , marginLeft:"10px"}}>
-                                <ProgrammingFeatured/>
-                        </div>
-                   </center>
+                        <center>
+                            <div>
+                                {this.state.filteredData.length === 0 ? (
+                                                <div className="alert alert-danger" style={{marginLeft:""}}>
+                                                    <center>The book is not here 
+                                                    <img src="https://i.ibb.co/n6ympXY/notfound.jpg" style={{width:"10%"}}/></center>
+                                                </div>
+                                            ): (this.state.filteredData.map(i => 
+                                <div style={{display:"inline-block" , padding: "10px 1px 10px 10px"}}>
+                                    <center>
+                                        <div className="card border-primary mb-3" > 
+                                            <div className="card-body text-dark">
+                                            <img src={i.noteImage} border="0'" alt={i.noteName} className="img-thumbnail zoom" style={{width:"200px" , height:"300px"}}/>
+                                            
+                                            <p ><b>{i.noteName}</b></p>
+                                            <p className="badge badge-success">{i.author}</p><br/>
+                                            <span style={{float:"left"}} className="coloured"><i class="fa fa-heart" aria-hidden="true"></i> {i.hearts}</span>
+                                            <span style={{float:"right"}}><i class="fa fa-download" aria-hidden="true"></i> {i.downloads}</span>
+                                            <Link to= {`/view/${i._id}/${crypto.randomBytes(40).toString("hex")}/${i.noteName}/${i.author}/${encodeURIComponent(i.noteURL)}/${encodeURIComponent(i.noteImage)}/${i.downloads}/${i.hearts}/${i.category}/${"උසස් පෙළ කෙටි සටහන් - Advanced Level Notes"}/${encodeURIComponent("/al")}`}><button className="btn btn-primary" style={{width:"100%"}}><i class="fa fa-eye" aria-hidden="true"></i> View</button></Link>
+                                            </div>
+                                        
+                                        </div>
+                                    </center>
+
+                                </div>))}
+                            </div>
+                        </center>
+                
+                    </div>
                 </article>
             </section>
-
-
-          
         </div>
-    )
+    
+    );
+  }
 }
-
-export default NavBar;

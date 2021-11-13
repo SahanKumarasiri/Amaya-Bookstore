@@ -18,9 +18,10 @@ const NavBar = () =>{
 
     today = m_names[curr_month] + " " + curr_date + "/ " + curr_year;
 
-    const{ id , bookName , author , url , image , downloads , hearts , category} = useParams();
+    const{ id , bookName , author , url , image , downloads , hearts , category , sitemap , route} = useParams();
     const Image = decodeURIComponent(image);
     const URL = decodeURIComponent(url);
+    const ROUTE = decodeURIComponent(route);
 
     const handleDownload = async ()=>{
         try {
@@ -46,6 +47,7 @@ const NavBar = () =>{
 
     const Heart = ()=>{
         document.getElementById("heart").innerHTML = Number(hearts) + 1 +` <i class="fa fa-heart coloured" aria-hidden="true"></i>`;
+        document.getElementById("like").innerHTML = `<span class="alert alert-danger role="alert">You Liked ` + bookName + "</span>";
     }
 
     return(
@@ -92,11 +94,11 @@ const NavBar = () =>{
                             <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">වර්ගීකරණය - Category</a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a className="dropdown-item" href="#"><i class="fa fa-check-square-o" aria-hidden="true"></i> නවකතා - Novels</a>
-                                <a className="dropdown-item" href="#"><i class="fa fa-check-square-o" aria-hidden="true"></i> Programming Languages</a>
-                                <a className="dropdown-item" href="#"><i class="fa fa-check-square-o" aria-hidden="true"></i> අභිරහස් කතා - Adventure/Horror</a>
-                                <a className="dropdown-item" href="#"><i class="fa fa-check-square-o" aria-hidden="true"></i> සාමාන්‍ය පෙළ කෙටි සටහන් - Ordinary Level Notes</a>
-                                <a className="dropdown-item" href="#"><i class="fa fa-check-square-o" aria-hidden="true"></i> උසස් පෙළ කෙටි සටහන් - Advanced Level Notes</a>
+                            <Link className="dropdown-item" to="/novel"><i class="fa fa-check-square-o" aria-hidden="true"></i> නවකතා - Novels</Link>
+                                <Link className="dropdown-item" to="/programming"><i class="fa fa-check-square-o" aria-hidden="true"></i> Programming Languages</Link>
+                                <Link className="dropdown-item" to="/adventure"><i class="fa fa-check-square-o" aria-hidden="true"></i> අභිරහස් කතා - Adventure/Horror</Link>
+                                <Link className="dropdown-item" to="/ol"><i class="fa fa-check-square-o" aria-hidden="true"></i> සාමාන්‍ය පෙළ කෙටි සටහන් - Ordinary Level Notes</Link>
+                                <Link className="dropdown-item" to="/al"><i class="fa fa-check-square-o" aria-hidden="true"></i> උසස් පෙළ කෙටි සටහන් - Advanced Level Notes</Link>
                             </div>
                             </li>   
                             <li className="nav-item">
@@ -127,11 +129,14 @@ const NavBar = () =>{
                     </marquee>
                 </div>
             </div>
-          
+
+            <div style={{marginLeft:"15px"}}>
+                <Link to="/"><span>Dashbord</span ></Link> <i class="fa fa-chevron-right" aria-hidden="true"></i> <Link to={ROUTE}><span>{sitemap}</span ></Link> <i class="fa fa-chevron-right" aria-hidden="true"></i> <span>{bookName}</span >
+            </div>
             <img src="https://media.giphy.com/media/1TgECF0mNVirC/giphy.gif" style={{float:"right" , width:"20%" , marginRight:"10px"}} className="img-thumbnail"/>
 
             <hr class="my-4"></hr>
-            <center><h1 style={{fontFamily:"Copperplate, Papyrus, fantasy"}}>ප්‍රසිද්ධ පොත් - Most Popular Books</h1></center>
+            <center><h1 style={{fontFamily:"Copperplate, Papyrus, fantasy"}}>{sitemap}</h1></center>
             <hr class="my-4"></hr>
             
 
@@ -139,10 +144,10 @@ const NavBar = () =>{
                 <nav className="nav">
                     <ul className="ul">
                         <center>
-                            <li className="li"><a class="active" href="#home">Home</a></li>
-                            <li className="li"><a href="#news">නවකතා - Novels</a></li>
-                            <li className="li"><a href="#contact">අභිරහස් කතා - Adventure Stories</a></li>
-                            <li className="li"><a href="#about">Cracked Softwares</a></li>
+                        <li className="li"><Link to="/">Home</Link></li>
+                            <li className="li"><Link to="/novel">නවකතා - Novels</Link></li>
+                            <li className="li"><Link to="/adventure">අභිරහස් කතා - Adventure Stories</Link></li>
+                            <li className="li"><a href="http://onlinesoftwaresolutions.000webhostapp.com/" target="_blank">Cracked Softwares</a></li>
                         </center>
                      </ul>
                 </nav>
@@ -153,9 +158,9 @@ const NavBar = () =>{
                         <div class="card border-success mb-3 polaroid" style={{maxWidth: "30rem" , display:"block" , marginLeft:"auto" , marginRight:"auto"}}>
                             <center>
                                 <img src={Image} border="0'" alt={Image} className="img-thumbnail" style={{width:"800px" , height:"600px"}}/>
-                                <div class="card-header">{bookName}</div>
+                                <div class="card-header" id="like">{bookName}</div>
                                 <span className="span" id="heart" onClick={() => { handleHeart(); Heart();}}>{hearts} <i class="fa fa-heart" aria-hidden="true"></i></span> |
-                                <span id="increment"> {downloads} <i class="fa fa-download" aria-hidden="true"></i></span>
+                                <span id="increment"> {downloads} <i class="fa fa-download" aria-hidden="true"></i></span><br/>
                                 <div class="card-body text-success">
                                     <span className="badge badge-success">{author}</span><br/><br/>
                                     <a href={URL} target="_blank"><button className="btn btn-danger" onClick={() => { handleDownload(); Increment();}}><i class="fa fa-download" aria-hidden="true"></i> Download</button></a>

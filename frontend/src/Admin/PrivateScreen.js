@@ -73,11 +73,11 @@ const PrivateScreen = ({history} , props)=>{
                         <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">වර්ගීකරණය - Category</a>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a className="dropdown-item" href="#"><i class="fa fa-check-square-o" aria-hidden="true"></i> නවකතා - Novels</a>
-                            <a className="dropdown-item" href="#"><i class="fa fa-check-square-o" aria-hidden="true"></i> Programming Languages</a>
-                            <a className="dropdown-item" href="#"><i class="fa fa-check-square-o" aria-hidden="true"></i> අභිරහස් කතා - Adventure/Horror</a>
-                            <a className="dropdown-item" href="#"><i class="fa fa-check-square-o" aria-hidden="true"></i> සාමාන්‍ය පෙළ කෙටි සටහන් - Ordinary Level Notes</a>
-                            <a className="dropdown-item" href="#"><i class="fa fa-check-square-o" aria-hidden="true"></i> උසස් පෙළ කෙටි සටහන් - Advanced Level Notes</a>
+                        <Link className="dropdown-item" to="/novel"><i class="fa fa-check-square-o" aria-hidden="true"></i> නවකතා - Novels</Link>
+                                <Link className="dropdown-item" to="/programming"><i class="fa fa-check-square-o" aria-hidden="true"></i> Programming Languages</Link>
+                                <Link className="dropdown-item" to="/adventure"><i class="fa fa-check-square-o" aria-hidden="true"></i> අභිරහස් කතා - Adventure/Horror</Link>
+                                <Link className="dropdown-item" to="/ol"><i class="fa fa-check-square-o" aria-hidden="true"></i> සාමාන්‍ය පෙළ කෙටි සටහන් - Ordinary Level Notes</Link>
+                                <Link className="dropdown-item" to="/al"><i class="fa fa-check-square-o" aria-hidden="true"></i> උසස් පෙළ කෙටි සටහන් - Advanced Level Notes</Link>
                         </div>
                         </li>   
                         <li className="nav-item active">
@@ -111,6 +111,9 @@ const PrivateScreen = ({history} , props)=>{
             </ul>
         </div>
         </div>
+        <div style={{marginLeft:"15px"}}>
+                <Link to="/"><span>Dashbord</span ></Link> <i class="fa fa-chevron-right" aria-hidden="true"></i> <Link to="/login"><span>Admin Login</span ></Link> <i class="fa fa-chevron-right" aria-hidden="true"></i> <span>{name}</span >
+            </div>
         <hr class="my-4"></hr>
         <center><h1 style={{fontFamily:"Copperplate, Papyrus, fantasy"}}>Welcome Admin</h1></center>
         <hr class="my-4"></hr>

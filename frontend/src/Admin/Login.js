@@ -109,11 +109,11 @@ const Login = ({history})=>{
                             <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">වර්ගීකරණය - Category</a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a className="dropdown-item" href="#"><i class="fa fa-check-square-o" aria-hidden="true"></i> නවකතා - Novels</a>
-                                <a className="dropdown-item" href="#"><i class="fa fa-check-square-o" aria-hidden="true"></i> Programming Languages</a>
-                                <a className="dropdown-item" href="#"><i class="fa fa-check-square-o" aria-hidden="true"></i> අභිරහස් කතා - Adventure/Horror</a>
-                                <a className="dropdown-item" href="#"><i class="fa fa-check-square-o" aria-hidden="true"></i> සාමාන්‍ය පෙළ කෙටි සටහන් - Ordinary Level Notes</a>
-                                <a className="dropdown-item" href="#"><i class="fa fa-check-square-o" aria-hidden="true"></i> උසස් පෙළ කෙටි සටහන් - Advanced Level Notes</a>
+                            <Link className="dropdown-item" to="/novel"><i class="fa fa-check-square-o" aria-hidden="true"></i> නවකතා - Novels</Link>
+                                <Link className="dropdown-item" to="/programming"><i class="fa fa-check-square-o" aria-hidden="true"></i> Programming Languages</Link>
+                                <Link className="dropdown-item" to="/adventure"><i class="fa fa-check-square-o" aria-hidden="true"></i> අභිරහස් කතා - Adventure/Horror</Link>
+                                <Link className="dropdown-item" to="/ol"><i class="fa fa-check-square-o" aria-hidden="true"></i> සාමාන්‍ය පෙළ කෙටි සටහන් - Ordinary Level Notes</Link>
+                                <Link className="dropdown-item" to="/al"><i class="fa fa-check-square-o" aria-hidden="true"></i> උසස් පෙළ කෙටි සටහන් - Advanced Level Notes</Link>
                             </div>
                             </li>   
                             <li className="nav-item active">
@@ -144,7 +144,10 @@ const Login = ({history})=>{
                     </marquee>
                 </div>
             </div>
-        
+
+            <div style={{marginLeft:"15px"}}>
+                <Link to="/"><span>Dashbord</span ></Link> <i class="fa fa-chevron-right" aria-hidden="true"></i> <Link to="/login"><span>Admin Login</span ></Link>
+            </div>
             <img src="https://media.giphy.com/media/1TgECF0mNVirC/giphy.gif" style={{float:"right" , width:"20%" , marginRight:"10px"}} className="img-thumbnail"/>
 
             <hr class="my-4"></hr>
@@ -156,9 +159,9 @@ const Login = ({history})=>{
                 <nav className="nav">
                     <ul className="ul">
                         <center>
-                            <li className="li"><a class="active" href="#home">Home</a></li>
-                            <li className="li"><a href="#news">නවකතා - Novels</a></li>
-                            <li className="li"><a href="#contact">අභිරහස් කතා - Adventure Stories</a></li>
+                            <li className="li"><Link to="/">Home</Link></li>
+                            <li className="li"><Link to="/novel">නවකතා - Novels</Link></li>
+                            <li className="li"><Link to="/adventure">අභිරහස් කතා - Adventure Stories</Link></li>
                             <li className="li"><a href="http://onlinesoftwaresolutions.000webhostapp.com/" target="_blank">Cracked Softwares</a></li>
                         </center>
                     </ul>
