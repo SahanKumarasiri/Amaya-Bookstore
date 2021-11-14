@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import crypto from "crypto"
 
 
-export default class Item extends React.Component {
+export default class AdventureFeatured extends React.Component {
   state = {
     query: "",
     data: [],

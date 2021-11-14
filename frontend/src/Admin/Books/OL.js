@@ -4,7 +4,7 @@ import { TextField , Button} from "@material-ui/core";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Novel = ()=>{
+const OL = ()=>{
 
     const [noteName , setNoteName] = useState("");
     const [author , setAuthor] = useState("");
@@ -117,4 +117,4 @@ const Novel = ()=>{
     
 }
 
-export default Novel;
+export default OL;

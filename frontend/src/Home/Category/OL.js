@@ -181,11 +181,11 @@ export default class Item extends React.Component {
                      </ul>
                 </nav>
                 <article>
-                    <div class="input-group rounded">
-                      <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" onChange={this.handleInputChange} value={this.state.query} />
-                      <span class="input-group-text border-0" id="search-addon" style = {{float:"right"}}>
+                    <div class="input-group rounded sticky-top">
+                      <input type="search" class="form-control rounded" placeholder="Search for book" aria-label="Search" aria-describedby="search-addon" onChange={this.handleInputChange} value={this.state.query} />
+                      <button type="button" class="btn btn-secondary">
                         <i class="fa fa-search" aria-hidden="true"></i>
-                      </span>
+                      </button>
                     </div>
                     <br/>
                     <div style={{ width:"auto" , height:"auto"  , maxWidth:"auto"}}>

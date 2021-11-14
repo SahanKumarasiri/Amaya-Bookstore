@@ -7,11 +7,13 @@ import NavBar from "./Home/NavBar";
 import AdminLogin from "./Admin/Login";
 import Item from "./Home/Item"
 import PrivateScreen from "./Admin/PrivateScreen";
+import PrivateRoute from "./Admin/PrivateRoute"
 import Novel from "./Home/Category/Novel";
 import Programming from "./Home/Category/Programming";
 import Adventure from "./Home/Category/Adventure";
 import OL from "./Home/Category/OL";
 import AL from "./Home/Category/AL";
+import ListView from "./Admin/ListView";
 
 function App() {
   // The back-to-top button is hidden at the beginning
@@ -49,6 +51,7 @@ function App() {
                   <Route path="/adventure" exact component={Adventure} />
                   <Route path="/ol" exact component={OL} />
                   <Route path="/al" exact component={AL} />
+                  <Route path="/admin/view/:id/:name" exact component={ListView} />
               </Switch>
             </main>
            

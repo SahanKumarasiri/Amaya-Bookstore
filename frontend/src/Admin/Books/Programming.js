@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const Novel = ()=>{
+const Programing = ()=>{
 
     const [bookName , setBookName] = useState("");
     const [author , setAuthor] = useState("");
@@ -117,4 +117,4 @@ const Novel = ()=>{
     
 }
 
-export default Novel;
+export default Programing;

@@ -3,7 +3,7 @@ import { Link , useParams} from "react-router-dom";
 import "../Home/NavBar.css";
 import Devider from "./Devider";
 
-const PrivateScreen = ({history} , props)=>{
+const ListView = ({history} , props)=>{
 
     useEffect(()=>{
         if(!localStorage.getItem("authToken")){  //push a user if he already logged in
@@ -28,7 +28,7 @@ const PrivateScreen = ({history} , props)=>{
 
     today = m_names[curr_month] + " " + curr_date + "/ " + curr_year;
 
-    const { id , name } = useParams();
+    const { id ,name } = useParams();
     return(
         <div id="header">
         <div className="topbar">
@@ -112,7 +112,7 @@ const PrivateScreen = ({history} , props)=>{
         </div>
         </div>
         <div style={{marginLeft:"15px"}}>
-                <Link to="/"><span>Dashbord</span ></Link> <i class="fa fa-chevron-right" aria-hidden="true"></i> <Link to="/login"><span>Admin Login</span ></Link> <i class="fa fa-chevron-right" aria-hidden="true"></i> <span>Create</span ><Link to={`/admin/view/${id}/${name}`} style={{float:"right" , marginRight:"10px"}}><button className="badge badge-warning">View</button></Link>
+                <Link to="/"><span>Dashbord</span ></Link> <i class="fa fa-chevron-right" aria-hidden="true"></i> <Link to="/login"><span>Admin Login</span ></Link> <i class="fa fa-chevron-right" aria-hidden="true"></i> <span>View</span ><Link to={`/admin/${id}/${name}`} style={{float:"right" , marginRight:"10px"}}><button className="badge badge-warning">Add Book</button></Link>
         </div>
         <hr class="my-4"></hr>
         <center><h1 style={{fontFamily:"Copperplate, Papyrus, fantasy"}}>Welcome Admin</h1></center>
@@ -139,4 +139,4 @@ const PrivateScreen = ({history} , props)=>{
 
 }
 
-export default PrivateScreen;
+export default ListView;

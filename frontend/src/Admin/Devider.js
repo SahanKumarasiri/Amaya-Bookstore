@@ -84,8 +84,8 @@ class FloatingActionButtonZoom extends React.Component {
             <Tab label="Novels" style={{fontSize:"10px",fontStyle:"bold"}}/>
             <Tab label="Programing Laguages" style={{fontSize:"10px"}}/>
             <Tab label="Adventure / Horror" style={{fontSize:"10px"}}/>
-            <Tab label="O/L Notes" style={{fontSize:"10px"}}/>
-            <Tab label="A/L Notes" style={{fontSize:"10px"}}/>
+            <Tab label="O/L" style={{fontSize:"10px"}}/>
+            <Tab label="A/L" style={{fontSize:"10px"}}/>
           </Tabs>
         </AppBar>
         <SwipeableViews

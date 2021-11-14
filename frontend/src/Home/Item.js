@@ -3,8 +3,9 @@ import { useParams } from "react-router";
 import {Link} from "react-router-dom";
 import axios from "axios";
 import "./NavBar.css"
+import Comment from "./Comment"
 
-const NavBar = () =>{
+const Item = () =>{
     
     var m_names = new Array("January", "February", "March", 
                 "April", "May", "June", "July",
@@ -88,7 +89,7 @@ const NavBar = () =>{
 
                         <div className="collapse navbar-collapse" id="navbartoggle">
                         <ul className="navbar-nav float-right">
-                            <li className="nav-item active">
+                            <li className="nav-item">
                             <Link to="/" className="nav-link"><i className="fa fa-book" aria-hidden="true"></i> Home </Link>
                             </li>
                             <li className="nav-item dropdown">
@@ -159,8 +160,8 @@ const NavBar = () =>{
                             <center>
                                 <img src={Image} border="0'" alt={Image} className="img-thumbnail" style={{width:"800px" , height:"600px"}}/>
                                 <div class="card-header" id="like">{bookName}</div>
-                                <span className="span" id="heart" onClick={() => { handleHeart(); Heart();}}>{hearts} <i class="fa fa-heart" aria-hidden="true"></i></span> |
-                                <span id="increment"> {downloads} <i class="fa fa-download" aria-hidden="true"></i></span><br/>
+                                <span className="span" id="heart" onClick={() => { handleHeart(); Heart();}}>{hearts} <i class="fa fa-heart" aria-hidden="true"></i></span> 
+                                <span id="increment">  {downloads} <i class="fa fa-download" aria-hidden="true"></i></span><br/>
                                 <div class="card-body text-success">
                                     <span className="badge badge-success">{author}</span><br/><br/>
                                     <a href={URL} target="_blank"><button className="btn btn-danger" onClick={() => { handleDownload(); Increment();}}><i class="fa fa-download" aria-hidden="true"></i> Download</button></a>
@@ -168,6 +169,7 @@ const NavBar = () =>{
                             </center>
                         </div>
                     </div>
+                    <Comment id={id} data={bookName}/>
                 </article>
             </section>
 
@@ -177,4 +179,4 @@ const NavBar = () =>{
     )
 }
 
-export default NavBar;
+export default Item;

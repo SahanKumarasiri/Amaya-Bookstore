@@ -40,5 +40,7 @@ app.use("/programming" , require("./BACKEND/routes/programming"));
 app.use("/ol" , require("./BACKEND/routes/ol"));
 app.use("/al" , require("./BACKEND/routes/al"));
 
+app.use("/comment" , require("./BACKEND/routes/comments"));
+
 //Error Handler (Should be the last piece of middleware)
 app.use(errorHandler);
