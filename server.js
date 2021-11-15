@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const errorHandler = require("./BACKEND/middleware/error");
 
 require("dotenv").config();  //these line is necessary for configuration .env file
+const path = require("path");
 
 const URL = process.env.MONGODB_URL;
 
@@ -26,11 +27,19 @@ const PORT = process.env.PORT || 8070; //accually process.env.PORT is inbuilt
 app.use((cors()));
 app.use(express.json()); //parse various different custom JSON types as JSON
 
+if(process.env.NODE_ENV === "production"){
+    app.use(express.static(path.join(__dirname, "/frontend/build")));
 
+    app.get("*" , (req , res)=>{
+        res.sendFile(path.join(__dirname , "frontend" , "build" , "index.html"));
+    })
+}else{
+    app.get("/" , (req ,res)=>{
+        res.send("Api Running");
+    })
+}
 
-app.listen(PORT , () => {
-    console.log(`Server is up and running on port number ${PORT}`);
-});
+app.listen(PORT, ()=> console.log(`Server is running on port ${PORT}`));
 
 app.use("/api/auth" , require("./BACKEND/routes/auth"));
 

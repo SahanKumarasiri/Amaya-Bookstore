@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link , useParams} from "react-router-dom";
 import "../Home/NavBar.css";
-import Devider from "./Devider";
+import DeviderView from "./DeviderView";
 
 const ListView = ({history} , props)=>{
 
@@ -122,7 +122,7 @@ const ListView = ({history} , props)=>{
             <article className="article">
                 <center>
                     <div className="container" style={{width:"100%"}}>
-                        <Devider/>
+                        <DeviderView/>
                     </div>
 
                 </center>

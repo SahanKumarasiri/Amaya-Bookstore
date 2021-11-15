@@ -7,11 +7,12 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import green from '@material-ui/core/colors/green';
-import Novel from './Books/Novel';
-import Adventure from './Books/Adventure';
-import Programming from './Books/Programming';
-import OL from './Books/OL';
-import AL from './Books/AL';
+import Novel from './Books/VIews/Novel';
+import Adventure from './Books/VIews/Adventure';
+import Programming from './Books/VIews/Programming';
+import OL from './Books/VIews/OL';
+import AL from './Books/VIews/AL';
+
 
 function TabContainer(props) {
   const { children, dir } = props;
@@ -93,9 +94,9 @@ class FloatingActionButtonZoom extends React.Component {
           index={this.state.value}
           onChangeIndex={this.handleChangeIndex}
         >
-          <TabContainer dir={theme.direction}><Novel/></TabContainer>
+          <TabContainer dir={theme.direction}><Novel /></TabContainer>
           <TabContainer dir={theme.direction}><Programming/></TabContainer>
-          <TabContainer dir={theme.direction}><Adventure/></TabContainer>
+          <TabContainer dir={theme.direction}><Adventure /></TabContainer>
           <TabContainer dir={theme.direction}><OL/></TabContainer>
           <TabContainer dir={theme.direction}><AL/></TabContainer>
         </SwipeableViews>

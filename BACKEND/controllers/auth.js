@@ -61,9 +61,10 @@ exports.sendEmail = async (req , res , next) =>{
          `
         try {
             await sendEmail({
-                to : "kumarasirisahan@gmail.com",
+                to : "amayabookshop@gmail.com",
                 subject : "About Subscription",
-                text : message
+                text : message,
+                from : email 
             })
 
             res.status(200).json({ success : true , data : "Email Sent"});
